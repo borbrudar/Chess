@@ -23,5 +23,7 @@ public:
 	//en passant for pawns; 1 - white, 2 - black
 	bool enPassant = false;
 	int epCase = 0;
-	bool thisMove = false; //to test if it's ready
+	//promotion 1- rook, 2- knight, 4 - bishop, 4 - queen
+	int promotion = 0;
+	bool isPromoting = false;
 };

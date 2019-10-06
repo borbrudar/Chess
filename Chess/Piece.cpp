@@ -49,6 +49,9 @@ bool Piece::canMove(int x, int y,int piece, int board[8][8], std::vector<Piece> 
 		else return false;
 		break;
 	case 6://pawns
+		if (isWhite && y == 0) 
+			isPromoting = true;
+		else if(!isWhite && y == 7) isPromoting = true;
 		if (attackingAllies(x, y, piece)) return false;
 		//en passant
 		for (int i = 0; i < f.size(); i++) {
