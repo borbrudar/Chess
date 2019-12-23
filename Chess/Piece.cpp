@@ -154,3 +154,28 @@ bool Piece::moveThroughPieces(int x, int y, int board[8][8])
 
 	return false;
 }
+
+bool Piece::attackingKing(int x, int y, int shape,int kX,int kY)
+{
+	switch (shape) {
+	case 1:
+		break;
+	case 2:
+		if (x + 2 == kX && y + 1 == kY)	 std::cout << "true\n"; return true;
+		if (x + 2 == kX && y - 1 == kY)	 std::cout << "true\n"; return true;
+		if (x - 2 == kX && y + 1 == kY)	 std::cout << "true\n"; return true;
+		if (x - 2 == kX && y - 1 == kY)	 std::cout << "true\n"; return true;
+		if (x + 1 == kX && y + 2 == kY)	 std::cout << "true\n"; return true;
+		if (x + 1 == kX && y - 2 == kY)	 std::cout << "true\n"; return true;
+		if (x - 1 == kX && y + 2 == kY)	 std::cout << "true\n"; return true;
+		if (x - 1 == kX && y - 2 == kY)	 std::cout << "true\n"; return true;
+			break;
+	case 3:
+		break;
+	case 4: 
+		break;
+	case 6:
+		break;
+	}
+	return false;
+}

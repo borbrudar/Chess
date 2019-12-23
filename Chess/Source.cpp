@@ -106,19 +106,7 @@ int main() {
 								b.f[n].piece.setPosition(newPos);
 								b.f[n].boardPos = Vector2i(int(newPos.x / size), int(newPos.y / size));
 
-								//taking logic
-								if (b.board[(int)(newPos.y / size)][(int)(newPos.x / size)] != 0) {
-									b.board[(int)(newPos.y / size)][(int)(newPos.x / size)] = 0;
-
-									for (std::size_t i = 0; i < b.f.size(); i++) {
-										if (i != n) {
-											if (b.f[i].boardPos.x == (int)(newPos.x / size) && b.f[i].boardPos.y == (int)(newPos.y / size)) {
-												b.f.erase(b.f.begin() + i);
-												break;
-											}
-										}
-									}
-								}
+								
 
 
 								//castling
@@ -183,6 +171,19 @@ int main() {
 									}
 								}
 
+								//taking logic
+								if (b.board[(int)(newPos.y / size)][(int)(newPos.x / size)] != 0) {
+									b.board[(int)(newPos.y / size)][(int)(newPos.x / size)] = 0;
+
+									for (std::size_t i = 0; i < b.f.size(); i++) {
+										if (i != n) {
+											if (b.f[i].boardPos.x == (int)(newPos.x / size) && b.f[i].boardPos.y == (int)(newPos.y / size)) {
+												b.f.erase(b.f.begin() + i);
+												break;
+											}
+										}
+									}
+								}
 
 								//update board
 								b.board[(int)(oldPos.y / size)][int(oldPos.x / size)] = 0;
@@ -201,8 +202,12 @@ int main() {
 
 			}
 			if (move) b.f[n].piece.setPosition(mousePos.x - dx, mousePos.y - dy);
-
-
+			/*int kx = 0, ky = 0;
+			for (int i = 0; i < b.f.size(); i++) {
+				if (b.f[i].shape == 5) kx = b.f[i].boardPos.x; ky = b.f[i].boardPos.y; break;
+			}
+			for (int i = 0; i < b.f.size(); i++) b.f[i].attackingKing(b.f[i].boardPos.x, b.f[i].boardPos.y, b.f[i].shape, kx, ky);
+			*/
 			window.clear(Color::Black);
 			window.draw(s);
 			for (int i = 0; i < b.f.size(); i++) window.draw(b.f[i].piece);

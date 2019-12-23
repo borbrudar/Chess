@@ -1,5 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include <iostream>
 
 using namespace sf;
 
@@ -9,6 +10,7 @@ public:
 	bool canMove(int x, int y,int piece, int board[8][8], std::vector<Piece> &f);
 	bool attackingAllies(int x, int y, int piece);
 	bool moveThroughPieces(int x, int y,int board[8][8]);
+	bool attackingKing(int x, int y, int shape, int kX, int kY);
 public:
 	Sprite piece;
 	bool isWhite;
